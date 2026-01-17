@@ -24,7 +24,7 @@ import BlurText from "./components/BlurText";
 import CounterAnimation from "./components/CounterAnimation";
 import SplashCursor from "./components/SplashCursor";
 
-const API_BASE = "http://localhost:5000/api";
+const API_BASE = window.__API_BASE__ || import.meta.env.VITE_API_BASE || "http://localhost:5000/api";
 const BASE_PATH = import.meta.env.BASE_URL;
 
 function App() {
@@ -235,7 +235,7 @@ function App() {
 
     {/* Page content */}
     {/* Professional Hero Section */}
-<section className="pt-16 sm:pt-20 md:pt-24 px-3 sm:px-4 md:px-6 lg:px-8 pb-8 sm:pb-12 md:pb-20 relative overflow-hidden">
+<section className="pt-8 sm:pt-12 md:pt-16 px-2 sm:px-4 md:px-6 lg:px-8 pb-6 sm:pb-8 md:pb-12 relative overflow-hidden">
   {/* Animated background blobs - hidden on mobile */}
   <div className="hidden sm:block absolute inset-0 -z-10 overflow-hidden">
     <motion.div
@@ -388,7 +388,7 @@ function App() {
 </section>
 
 {/* Projects Section */}
-<section id="projects" className="py-8 sm:py-12 md:py-20 lg:py-28 px-3 sm:px-4 md:px-6 lg:px-8">
+<section id="projects" className="py-4 sm:py-8 md:py-16 lg:py-24 px-2 sm:px-4 md:px-6 lg:px-8">
   <div className="max-w-7xl mx-auto">
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -399,7 +399,7 @@ function App() {
       <BlurText
         text="Featured Projects"
         delay={100}
-        className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-4 text-slate-100"
+        className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black mb-2 sm:mb-4 text-slate-100"
         animateBy="words"
         direction="top"
         stepDuration={0.4}
@@ -407,7 +407,7 @@ function App() {
       <BlurText
         text="Showcasing my best work and technical expertise"
         delay={60}
-        className="text-base sm:text-lg md:text-xl text-slate-400"
+        className="text-xs sm:text-sm md:text-lg text-slate-400"
         animateBy="words"
         direction="top"
         stepDuration={0.2}
@@ -437,18 +437,18 @@ function App() {
           />
 
           {/* Project Image Area */}
-          <div className="h-24 sm:h-32 md:h-40 lg:h-56 bg-slate-800/50 relative overflow-hidden">
+          <div className="h-20 sm:h-24 md:h-32 lg:h-48 bg-slate-800/50 relative overflow-hidden">
           </div>
 
-          <div className="p-4 sm:p-6 md:p-8 relative z-10">
+          <div className="p-3 sm:p-4 md:p-6 lg:p-8 relative z-10">
             <motion.h3
               whileHover={{ x: 5 }}
-              className="text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-3 text-slate-100"
+              className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold mb-1 sm:mb-2 md:mb-3 text-slate-100"
             >
               {project.name}
             </motion.h3>
 
-            <p className="text-xs sm:text-sm md:text-base text-slate-400 mb-4 sm:mb-6 line-clamp-2">
+            <p className="text-xs sm:text-xs md:text-sm lg:text-base text-slate-400 mb-3 sm:mb-4 md:mb-6 line-clamp-2">
               {project.description}
             </p>
 
@@ -500,18 +500,18 @@ function App() {
 </section>
 
 {/* Skills Section */}
-<section id="skills" className="py-8 sm:py-12 md:py-20 lg:py-28 px-3 sm:px-4 md:px-6 lg:px-8">
+<section id="skills" className="py-4 sm:py-8 md:py-16 lg:py-24 px-2 sm:px-4 md:px-6 lg:px-8">
   <div className="max-w-7xl mx-auto">
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="mb-8 sm:mb-12 md:mb-16"
+      className="mb-6 sm:mb-8 md:mb-12"
     >
       <BlurText
         text="Technical Skills"
         delay={100}
-        className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-4 text-slate-100"
+        className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black mb-2 sm:mb-4 text-slate-100"
         animateBy="words"
         direction="top"
         stepDuration={0.4}
@@ -519,7 +519,7 @@ function App() {
       <BlurText
         text="Expertise across modern web technologies"
         delay={60}
-        className="text-base sm:text-lg md:text-xl text-slate-400"
+        className="text-xs sm:text-sm md:text-lg text-slate-400"
         animateBy="words"
         direction="top"
         stepDuration={0.2}
@@ -539,7 +539,7 @@ function App() {
             y: -10,
             boxShadow: '0 0 40px rgba(100,200,255,0.4)'
           }}
-          className="rounded-xl overflow-hidden border border-slate-700/50 bg-slate-800/40 hover:bg-slate-800/60 card-hover p-4 sm:p-6 md:p-8 transition-all relative group"
+          className="rounded-xl overflow-hidden border border-slate-700/50 bg-slate-800/40 hover:bg-slate-800/60 card-hover p-3 sm:p-4 md:p-6 lg:p-8 transition-all relative group"
         >
           {/* Animated gradient background */}
           <motion.div
@@ -552,15 +552,15 @@ function App() {
 
           <motion.div
             whileHover={{ rotate: 10 }}
-            className="w-10 sm:w-12 h-10 sm:h-12 rounded-lg bg-slate-700/50 flex items-center justify-center mb-4 sm:mb-6 relative z-10"
+            className="w-8 sm:w-10 md:w-12 h-8 sm:h-10 md:h-12 rounded-lg bg-slate-700/50 flex items-center justify-center mb-3 sm:mb-4 md:mb-6 relative z-10"
           >
-            <Zap size={24} className="text-slate-300" />
+            <Zap size={20} className="sm:w-5 sm:h-5 md:w-6 md:h-6 text-slate-300" />
           </motion.div>
 
           <motion.h3
             animate={{ y: [0, -3, 0] }}
             transition={{ duration: 2, repeat: Infinity, delay: index * 0.2 }}
-            className="text-xl font-bold mb-6 text-slate-100 relative z-10"
+            className="text-base sm:text-lg md:text-xl font-bold mb-3 sm:mb-4 md:mb-6 text-slate-100 relative z-10"
           >
             {category}
           </motion.h3>
@@ -599,18 +599,18 @@ function App() {
 </section>
 
 {/* Certifications Section */}
-<section id="certifications" className="py-8 sm:py-12 md:py-20 lg:py-28 px-3 sm:px-4 md:px-6 lg:px-8">
+<section id="certifications" className="py-4 sm:py-8 md:py-16 lg:py-24 px-2 sm:px-4 md:px-6 lg:px-8">
   <div className="max-w-7xl mx-auto">
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="mb-8 sm:mb-12 md:mb-16"
+      className="mb-6 sm:mb-8 md:mb-12"
     >
       <BlurText
         text="Certifications"
         delay={100}
-        className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-4 text-slate-100"
+        className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black mb-2 sm:mb-4 text-slate-100"
         animateBy="words"
         direction="top"
         stepDuration={0.4}
@@ -618,7 +618,7 @@ function App() {
       <BlurText
         text="Verified credentials and professional achievements"
         delay={60}
-        className="text-base sm:text-lg md:text-xl text-slate-400"
+        className="text-xs sm:text-sm md:text-lg text-slate-400"
         animateBy="words"
         direction="top"
         stepDuration={0.2}
@@ -656,23 +656,23 @@ function App() {
                 scale: [1, 1.1, 1]
               }}
               transition={{ duration: 3, repeat: Infinity }}
-              className="w-12 sm:w-14 md:w-16 h-12 sm:h-14 md:h-16 rounded-lg bg-slate-700/50 flex items-center justify-center flex-shrink-0"
+              className="w-9 sm:w-11 md:w-14 h-9 sm:h-11 md:h-14 rounded-lg bg-slate-700/50 flex items-center justify-center flex-shrink-0"
             >
-              <Star size={24} className="sm:w-7 sm:h-7 md:w-8 md:h-8 text-slate-300" />
+              <Star size={20} className="sm:w-5 sm:h-5 md:w-7 md:h-7 text-slate-300" />
             </motion.div>
 
             <div className="flex-1">
               <motion.h3
                 animate={{ y: [0, -2, 0] }}
                 transition={{ duration: 2, repeat: Infinity }}
-                className="text-lg sm:text-xl md:text-2xl font-bold mb-1 sm:mb-2 text-slate-100"
+                className="text-base sm:text-lg md:text-xl font-bold mb-1 text-slate-100"
               >
                 {cert.name}
               </motion.h3>
               <motion.p
                 animate={{ opacity: [0.8, 1, 0.8] }}
                 transition={{ duration: 3, repeat: Infinity }}
-                className="text-sm sm:text-base md:text-lg text-slate-400 font-semibold mb-2 sm:mb-3"
+                className="text-xs sm:text-sm md:text-base text-slate-400 font-semibold mb-2"
               >
                 {cert.issuer}
               </motion.p>
@@ -695,18 +695,18 @@ function App() {
   </div>
 </section>
 {/* Achievements Section */}
-<section id="achievements" className="py-8 sm:py-12 md:py-20 lg:py-28 px-3 sm:px-4 md:px-6 lg:px-8">
+<section id="achievements" className="py-4 sm:py-8 md:py-16 lg:py-24 px-2 sm:px-4 md:px-6 lg:px-8">
   <div className="max-w-7xl mx-auto">
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="mb-8 sm:mb-12 md:mb-16"
+      className="mb-6 sm:mb-8 md:mb-12"
     >
       <BlurText
         text="Achievements"
         delay={100}
-        className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-4 text-slate-100"
+        className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black mb-2 sm:mb-4 text-slate-100"
         animateBy="words"
         direction="top"
         stepDuration={0.4}
@@ -714,7 +714,7 @@ function App() {
       <BlurText
         text="Milestones and accomplishments in my career"
         delay={60}
-        className="text-base sm:text-lg md:text-xl text-slate-400"
+        className="text-xs sm:text-sm md:text-lg text-slate-400"
         animateBy="words"
         direction="top"
         stepDuration={0.2}
@@ -735,7 +735,7 @@ function App() {
             boxShadow: '0 0 50px rgba(100,200,255,0.6)',
             rotateZ: -1
           }}
-          className="group rounded-xl overflow-hidden border border-slate-700/50 bg-slate-800/40 hover:bg-slate-800/60 card-hover p-4 sm:p-6 md:p-8 transition-all relative"
+          className="group rounded-xl overflow-hidden border border-slate-700/50 bg-slate-800/40 hover:bg-slate-800/60 card-hover p-3 sm:p-4 md:p-6 lg:p-8 transition-all relative"
         >
           {/* Pulsing background */}
           <motion.div
@@ -746,16 +746,16 @@ function App() {
             transition={{ duration: 3, repeat: Infinity }}
           />
 
-          <div className="flex items-start gap-3 sm:gap-4 md:gap-6 relative z-10">
+          <div className="flex items-start gap-2 sm:gap-3 md:gap-4 lg:gap-6 relative z-10">
             <motion.div
               animate={{ 
                 y: [0, -15, 0],
                 rotate: [0, 5, -5, 0]
               }}
               transition={{ duration: 2.5, repeat: Infinity }}
-              className="w-12 sm:w-14 md:w-16 h-12 sm:h-14 md:h-16 rounded-lg bg-slate-700/50 flex items-center justify-center flex-shrink-0"
+              className="w-9 sm:w-11 md:w-14 h-9 sm:h-11 md:h-14 rounded-lg bg-slate-700/50 flex items-center justify-center flex-shrink-0"
             >
-              <TrendingUp size={24} className="sm:w-7 sm:h-7 md:w-8 md:h-8 text-slate-300" />
+              <TrendingUp size={20} className="sm:w-5 sm:h-5 md:w-6 md:h-6 text-slate-300" />
             </motion.div>
 
             <div className="flex-1">
@@ -763,7 +763,7 @@ function App() {
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ delay: index * 0.15 + 0.2 }}
-                className="text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-3 text-slate-100"
+                className="text-base sm:text-lg md:text-xl font-bold mb-1 sm:mb-2 text-slate-100"
               >
                 {achievement.title}
               </motion.h3>
@@ -772,7 +772,7 @@ function App() {
                   color: ['#cbd5e1', '#e2e8f0', '#cbd5e1']
                 }}
                 transition={{ duration: 3, repeat: Infinity }}
-                className="text-xs sm:text-sm md:text-lg text-slate-400 mb-2 sm:mb-4 line-clamp-2"
+                className="text-xs sm:text-xs md:text-sm lg:text-base text-slate-400 mb-2 line-clamp-2"
               >
                 {achievement.description}
               </motion.p>

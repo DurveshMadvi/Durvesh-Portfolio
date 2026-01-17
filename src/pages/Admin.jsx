@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { X, LogOut, Plus, Trash2, Eye, EyeOff, Lock } from 'lucide-react';
 
-const API_BASE = 'http://localhost:5000/api';
+// For development: detect if running locally or on mobile
+// On mobile, you'll need to set the API_HOST environment variable or manually enter the IP
+const API_BASE = window.__API_BASE__ || import.meta.env.VITE_API_BASE || 'http://localhost:5000/api';
 
 const Admin = ({ token, setToken, onLogout, onClose }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(!!token);
