@@ -27,6 +27,69 @@ import SplashCursor from "./components/SplashCursor";
 const API_BASE = window.__API_BASE__ || import.meta.env.VITE_API_BASE || "http://localhost:5000/api";
 const BASE_PATH = import.meta.env.BASE_URL;
 
+// Fallback data in case API is not available
+const DEFAULT_SKILLS = {
+  "languages": ["C++", "JavaScript (ES6+)", "C"],
+  "frontend": ["React.js", "Tailwind CSS", "Framer Motion", "Javascript"],
+  "backend": ["Node.js", "Express.js", "REST APIs", "JWT Auth"],
+  "database": ["MongoDB", "MySQL", "Git", "Power BI"]
+};
+
+const DEFAULT_PROJECTS = [
+  {
+    "id": 1,
+    "name": "Aqua Monitor",
+    "type": "Web Application",
+    "description": "A smart water monitoring system enabling real-time data tracking and management. Built with Flask & SQLAlchemy, featuring complete CRUD operations and an intuitive dashboard.",
+    "technologies": ["Python", "Flask", "SQLAlchemy", "MySQL", "Tailwind"],
+    "github": "https://github.com/DurveshMadvi/Aqua-Monitor",
+    "live": "https://aqua-monitor.example.com"
+  },
+  {
+    "id": 2,
+    "name": "Nuzz",
+    "type": "News Aggregator",
+    "description": "A dynamic news aggregation platform delivering real-time content from global news APIs. Designed with React for lightning-fast performance and a responsive interface.",
+    "technologies": ["React.js", "REST APIs", "Axios", "CSS3", "Responsive Design"],
+    "github": "https://github.com/DurveshMadvi/Nuzz",
+    "live": "https://durveshmadvi.github.io/Nuzz"
+  }
+];
+
+const DEFAULT_CERTIFICATIONS = [
+  {
+    "id": 1,
+    "name": "React.js Basics",
+    "issuer": "Udemy",
+    "date": "2024-01-15",
+    "category": "Frontend"
+  },
+  {
+    "id": 2,
+    "name": "Full Stack Web Development",
+    "issuer": "Self-Taught",
+    "date": "2024-06-20",
+    "category": "Full Stack"
+  }
+];
+
+const DEFAULT_ACHIEVEMENTS = [
+  {
+    "id": 1,
+    "title": "Top Performer in Data Structures",
+    "description": "Consistently demonstrated excellence in algorithm implementation and optimization",
+    "date": "2024",
+    "icon": "⭐"
+  },
+  {
+    "id": 2,
+    "title": "Open Source Contributor",
+    "description": "Contributed to multiple open source projects with meaningful code improvements",
+    "date": "2024",
+    "icon": "🚀"
+  }
+];
+
 function App() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isAdmin, setIsAdmin] = useState(false);
@@ -71,12 +134,22 @@ function App() {
           fetch(`${API_BASE}/achievements`)
         ]);
 
-        setSkills(await s.json());
-        setCertifications(await c.json());
-        setProjects(await p.json());
-        setAchievements(await a.json());
+        // Check if all responses are OK, if not use defaults
+        if (s.ok && c.ok && p.ok && a.ok) {
+          setSkills(await s.json());
+          setCertifications(await c.json());
+          setProjects(await p.json());
+          setAchievements(await a.json());
+        } else {
+          throw new Error("API responses not OK");
+        }
       } catch (err) {
-        console.error("API error:", err);
+        console.log("Using fallback data (API unavailable):", err.message);
+        // Use fallback data when API is not available
+        setSkills(DEFAULT_SKILLS);
+        setCertifications(DEFAULT_CERTIFICATIONS);
+        setProjects(DEFAULT_PROJECTS);
+        setAchievements(DEFAULT_ACHIEVEMENTS);
       } finally {
         setLoading(false);
       }
@@ -257,7 +330,7 @@ function App() {
   </div>
 
   <div className="max-w-7xl mx-auto">
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 lg:gap-12 items-center md:items-stretch">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-16 items-center md:items-stretch">
       {/* Left Content */}
       <motion.div
         initial={{ opacity: 0, x: -40 }}
@@ -371,9 +444,9 @@ function App() {
         initial={{ opacity: 0, x: 40 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8, delay: 0.3 }}
-        className="hidden sm:flex relative h-32 sm:h-48 md:h-64 lg:h-96 items-center justify-center"
+        className="flex relative h-28 sm:h-40 md:h-56 lg:h-80 items-center justify-center"
       >
-        <div className="relative w-28 h-28 sm:w-40 sm:h-40 md:w-60 md:h-60 lg:w-full lg:max-w-md mx-auto rounded-2xl overflow-hidden bg-black shadow-2xl">
+        <div className="relative w-24 h-24 sm:w-36 sm:h-36 md:w-52 md:h-52 lg:w-80 lg:h-80 mx-auto rounded-2xl overflow-hidden bg-black shadow-2xl">
           <img 
             src={`${BASE_PATH}Gemini_Generated_Image_4vrdju4vrdju4vrd.png`}
             alt="Durvesh Madvi"
@@ -388,7 +461,7 @@ function App() {
 </section>
 
 {/* Projects Section */}
-<section id="projects" className="py-8 sm:py-12 md:py-16 lg:py-20 px-3 sm:px-4 md:px-6 lg:px-8">
+<section id="projects" className="py-6 sm:py-10 md:py-14 lg:py-18 px-3 sm:px-4 md:px-6 lg:px-8">
   <div className="max-w-7xl mx-auto">
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -414,7 +487,7 @@ function App() {
       />
     </motion.div>
 
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3 md:gap-4 lg:gap-6">
       {projects.map((project, index) => (
         <motion.div
           key={project.id}
@@ -500,7 +573,7 @@ function App() {
 </section>
 
 {/* Skills Section */}
-<section id="skills" className="py-8 sm:py-12 md:py-16 lg:py-20 px-3 sm:px-4 md:px-6 lg:px-8">
+<section id="skills" className="py-6 sm:py-10 md:py-14 lg:py-18 px-3 sm:px-4 md:px-6 lg:px-8">
   <div className="max-w-7xl mx-auto">
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -599,7 +672,7 @@ function App() {
 </section>
 
 {/* Certifications Section */}
-<section id="certifications" className="py-8 sm:py-12 md:py-16 lg:py-20 px-3 sm:px-4 md:px-6 lg:px-8">
+<section id="certifications" className="py-6 sm:py-10 md:py-14 lg:py-18 px-3 sm:px-4 md:px-6 lg:px-8">
   <div className="max-w-7xl mx-auto">
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -695,7 +768,7 @@ function App() {
   </div>
 </section>
 {/* Achievements Section */}
-<section id="achievements" className="py-8 sm:py-12 md:py-16 lg:py-20 px-3 sm:px-4 md:px-6 lg:px-8">
+<section id="achievements" className="py-6 sm:py-10 md:py-14 lg:py-18 px-3 sm:px-4 md:px-6 lg:px-8">>
   <div className="max-w-7xl mx-auto">
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -795,7 +868,7 @@ function App() {
   </div>
 </section>
 {/* Contact Section */}
-<section id="contact" className="py-12 sm:py-16 md:py-24 lg:py-32 px-3 sm:px-4 md:px-6 lg:px-8 relative overflow-hidden">
+<section id="contact" className="py-6 sm:py-10 md:py-14 lg:py-18 px-3 sm:px-4 md:px-6 lg:px-8 relative overflow-hidden">
   {/* Animated background */}
   <motion.div
     className="absolute inset-0 -z-10"
