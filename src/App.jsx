@@ -428,7 +428,13 @@ function App() {
             <CounterAnimation value={3} duration={2} />
             <p className="text-slate-500 text-sm">Projects Done</p>
           </motion.div>
-          
+          <motion.div
+            whileHover={{ scale: 1.1, y: -5 }}
+            className="cursor-default"
+          >
+            <CounterAnimation value={8} duration={2} />
+            <p className="text-slate-500 text-sm">Certification</p>
+          </motion.div>
           <motion.div
             whileHover={{ scale: 1.1, y: -5 }}
             className="cursor-default"
