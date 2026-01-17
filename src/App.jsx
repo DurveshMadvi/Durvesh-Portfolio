@@ -164,21 +164,21 @@ function App() {
     ) : (
     <>
     {/* Professional Navbar */}
-    <nav className="fixed top-0 w-full bg-slate-950/95 backdrop-blur-xl border-b border-slate-800/50 z-50">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <nav className="fixed top-0 w-full bg-black backdrop-blur-xl border-b border-slate-800/50 z-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex justify-between items-center">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          className="flex items-center gap-3"
+          className="flex items-center gap-2 sm:gap-3"
         >
-          <div className="w-10 h-10 bg-gradient-to-br from-slate-300 to-slate-400 rounded-lg flex items-center justify-center">
-            <Code size={24} className="text-slate-900 font-bold" />
+          <div className="w-8 sm:w-10 h-8 sm:h-10 bg-gradient-to-br from-slate-300 to-slate-400 rounded-lg flex items-center justify-center">
+            <Code size={18} className="sm:w-6 sm:h-6 text-slate-900 font-bold" />
           </div>
-          <h1 className="text-2xl font-black text-slate-100">
+          <h1 className="text-lg sm:text-2xl font-black text-slate-100">
             Durvesh
           </h1>
         </motion.div>
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-2 sm:gap-6">
           <motion.a
             href="#contact"
             initial={{ opacity: 0, x: 20 }}
@@ -191,13 +191,13 @@ function App() {
               boxShadow: '0 0 20px rgba(100,200,255, 0.4)'
             }}
             whileTap={{ scale: 0.95 }}
-            className="relative group flex items-center gap-2 px-5 py-2 rounded-lg bg-black/80 border border-slate-600/80 hover:border-cyan-400 transition-all duration-300 overflow-hidden"
+            className="relative group hidden sm:flex items-center gap-2 px-4 sm:px-5 py-2 rounded-lg bg-black/80 border border-slate-600/80 hover:border-cyan-400 transition-all duration-300 overflow-hidden text-sm"
           >
             <motion.span
               whileHover={{ rotate: 15 }}
               className="relative z-10"
             >
-              <Mail size={18} className="text-slate-300 group-hover:text-cyan-400 transition-colors" />
+              <Mail size={16} className="text-slate-300 group-hover:text-cyan-400 transition-colors" />
             </motion.span>
             <span className="relative z-10 font-semibold text-slate-100 group-hover:text-white transition-colors">
               Contact
@@ -216,15 +216,15 @@ function App() {
               boxShadow: '0 0 25px rgba(100,200,255, 0.5)'
             }}
             whileTap={{ scale: 0.95 }}
-            className="relative group flex items-center gap-2 px-6 py-2 rounded-lg bg-black/90 border border-slate-600/80 transition-all duration-300 overflow-hidden font-semibold"
+            className="relative group flex items-center gap-1 sm:gap-2 px-3 sm:px-6 py-2 rounded-lg bg-black/90 border border-slate-600/80 transition-all duration-300 overflow-hidden font-semibold text-sm"
           >
             <motion.span
               whileHover={{ y: -3 }}
               className="relative z-10"
             >
-              {isAdmin ? <Code size={18} className="text-slate-300 group-hover:text-cyan-400 transition-colors" /> : <Lock size={18} className="text-slate-300 group-hover:text-cyan-400 transition-colors" />}
+              {isAdmin ? <Code size={16} className="text-slate-300 group-hover:text-cyan-400 transition-colors" /> : <Lock size={16} className="text-slate-300 group-hover:text-cyan-400 transition-colors" />}
             </motion.span>
-            <span className="relative z-10 text-slate-100 group-hover:text-white transition-colors">
+            <span className="relative z-10 text-slate-100 group-hover:text-white transition-colors hidden sm:inline">
               {isAdmin ? "Exit" : "Admin"}
             </span>
           </motion.button>
@@ -234,16 +234,16 @@ function App() {
 
     {/* Page content */}
     {/* Professional Hero Section */}
-<section className="pt-24 px-4 md:px-8 pb-20 relative overflow-hidden">
-  {/* Animated background blobs */}
-  <div className="absolute inset-0 -z-10 overflow-hidden">
+<section className="pt-20 sm:pt-24 px-4 sm:px-6 md:px-8 pb-12 sm:pb-20 relative overflow-hidden">
+  {/* Animated background blobs - hidden on mobile */}
+  <div className="hidden sm:block absolute inset-0 -z-10 overflow-hidden">
     <motion.div
       animate={{ 
         x: [0, 50, 0],
         y: [0, 50, 0]
       }}
       transition={{ duration: 30, repeat: Infinity, ease: "easeInOut" }}
-      className="absolute -top-40 -left-40 w-80 h-80 bg-slate-800/20 rounded-full blur-3xl"
+      className="absolute -top-40 -left-40 w-60 sm:w-80 h-60 sm:h-80 bg-slate-800/20 rounded-full blur-3xl"
     />
     <motion.div
       animate={{ 
@@ -251,12 +251,12 @@ function App() {
         y: [0, -50, 0]
       }}
       transition={{ duration: 35, repeat: Infinity, ease: "easeInOut" }}
-      className="absolute -bottom-40 -right-40 w-80 h-80 bg-slate-700/20 rounded-full blur-3xl"
+      className="absolute -bottom-40 -right-40 w-60 sm:w-80 h-60 sm:h-80 bg-slate-700/20 rounded-full blur-3xl"
     />
   </div>
 
   <div className="max-w-7xl mx-auto">
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 items-center">
       {/* Left Content */}
       <motion.div
         initial={{ opacity: 0, x: -40 }}
@@ -289,7 +289,7 @@ function App() {
           <BlurText
             text="Full Stack Developer"
             delay={150}
-            className="text-5xl md:text-6xl font-black mb-6 leading-tight"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-4 sm:mb-6 leading-tight"
             animateBy="words"
             direction="top"
             stepDuration={0.4}
@@ -299,7 +299,7 @@ function App() {
         <BlurText
           text="I craft beautiful, scalable web applications with cutting-edge technologies. Passionate about clean code and exceptional user experiences."
           delay={80}
-          className="text-xl text-slate-400 mb-8 leading-relaxed"
+          className="text-base sm:text-lg md:text-xl text-slate-400 mb-6 sm:mb-8 leading-relaxed"
           animateBy="words"
           direction="top"
           stepDuration={0.3}
@@ -309,7 +309,7 @@ function App() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
-          className="flex flex-col sm:flex-row gap-4 mb-12"
+          className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-8 sm:mb-12"
         >
           <motion.button
             onClick={startAutoScroll}
@@ -318,14 +318,14 @@ function App() {
             whileTap={{ scale: 0.95 }}
             animate={{ y: [0, -3, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="px-8 py-4 bg-slate-700 hover:bg-slate-600 disabled:opacity-50 rounded-lg btn-hover font-semibold text-lg flex items-center gap-2 transition-all"
+            className="px-6 sm:px-8 py-3 sm:py-4 bg-slate-700 hover:bg-slate-600 disabled:opacity-50 rounded-lg btn-hover font-semibold text-sm sm:text-lg flex items-center justify-center sm:justify-start gap-2 transition-all w-full sm:w-auto"
           >
             {isScrolling ? 'Exploring...' : "Let's Explore"}
             <motion.span
               animate={{ x: [0, 5, 0] }}
               transition={{ duration: 2, repeat: Infinity }}
             >
-              <ArrowRight size={20} />
+              <ArrowRight size={18} className="sm:w-5 sm:h-5" />
             </motion.span>
           </motion.button>
 
@@ -333,9 +333,9 @@ function App() {
             href="#contact"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-8 py-4 border-2 border-slate-600 hover:border-slate-500 rounded-lg btn-hover font-semibold text-lg flex items-center gap-2 transition-all"
+            className="px-6 sm:px-8 py-3 sm:py-4 border-2 border-slate-600 hover:border-slate-500 rounded-lg btn-hover font-semibold text-sm sm:text-lg flex items-center justify-center gap-2 transition-all w-full sm:w-auto"
           >
-            <Mail size={20} />
+            <Mail size={18} className="sm:w-5 sm:h-5" />
             Get In Touch
           </motion.a>
         </motion.div>
@@ -345,7 +345,7 @@ function App() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6 }}
-          className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6"
+          className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6"
         >
           <motion.div
             whileHover={{ scale: 1.1, y: -5 }}
@@ -387,7 +387,7 @@ function App() {
 </section>
 
 {/* Projects Section */}
-<section id="projects" className="py-32 px-4 md:px-8">
+<section id="projects" className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 md:px-8">
   <div className="max-w-7xl mx-auto">
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -398,7 +398,7 @@ function App() {
       <BlurText
         text="Featured Projects"
         delay={100}
-        className="text-5xl md:text-6xl font-black mb-4 text-slate-100"
+        className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-4 text-slate-100"
         animateBy="words"
         direction="top"
         stepDuration={0.4}
@@ -406,14 +406,14 @@ function App() {
       <BlurText
         text="Showcasing my best work and technical expertise"
         delay={60}
-        className="text-xl text-slate-400"
+        className="text-base sm:text-lg md:text-xl text-slate-400"
         animateBy="words"
         direction="top"
         stepDuration={0.2}
       />
     </motion.div>
 
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
       {projects.map((project, index) => (
         <motion.div
           key={project.id}
@@ -499,7 +499,7 @@ function App() {
 </section>
 
 {/* Skills Section */}
-<section id="skills" className="py-32 px-4 md:px-8">
+<section id="skills" className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 md:px-8">
   <div className="max-w-7xl mx-auto">
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -510,7 +510,7 @@ function App() {
       <BlurText
         text="Technical Skills"
         delay={100}
-        className="text-5xl md:text-6xl font-black mb-4 text-slate-100"
+        className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-4 text-slate-100"
         animateBy="words"
         direction="top"
         stepDuration={0.4}
@@ -518,14 +518,14 @@ function App() {
       <BlurText
         text="Expertise across modern web technologies"
         delay={60}
-        className="text-xl text-slate-400"
+        className="text-base sm:text-lg md:text-xl text-slate-400"
         animateBy="words"
         direction="top"
         stepDuration={0.2}
       />
     </motion.div>
 
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
       {Object.entries(skills).map(([category, skillsList], index) => (
         <motion.div
           key={category}
@@ -598,7 +598,7 @@ function App() {
 </section>
 
 {/* Certifications Section */}
-<section id="certifications" className="py-32 px-4 md:px-8">
+<section id="certifications" className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 md:px-8">
   <div className="max-w-7xl mx-auto">
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -609,7 +609,7 @@ function App() {
       <BlurText
         text="Certifications"
         delay={100}
-        className="text-5xl md:text-6xl font-black mb-4 text-slate-100"
+        className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-4 text-slate-100"
         animateBy="words"
         direction="top"
         stepDuration={0.4}
@@ -617,7 +617,7 @@ function App() {
       <BlurText
         text="Verified credentials and professional achievements"
         delay={60}
-        className="text-xl text-slate-400"
+        className="text-base sm:text-lg md:text-xl text-slate-400"
         animateBy="words"
         direction="top"
         stepDuration={0.2}
@@ -694,7 +694,7 @@ function App() {
   </div>
 </section>
 {/* Achievements Section */}
-<section id="achievements" className="py-32 px-4 md:px-8">
+<section id="achievements" className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 md:px-8">
   <div className="max-w-7xl mx-auto">
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -705,7 +705,7 @@ function App() {
       <BlurText
         text="Achievements"
         delay={100}
-        className="text-5xl md:text-6xl font-black mb-4 text-slate-100"
+        className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-4 text-slate-100"
         animateBy="words"
         direction="top"
         stepDuration={0.4}
@@ -713,14 +713,14 @@ function App() {
       <BlurText
         text="Milestones and accomplishments in my career"
         delay={60}
-        className="text-xl text-slate-400"
+        className="text-base sm:text-lg md:text-xl text-slate-400"
         animateBy="words"
         direction="top"
         stepDuration={0.2}
       />
     </motion.div>
 
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
       {achievements.map((achievement, index) => (
         <motion.div
           key={achievement.id}
@@ -794,7 +794,7 @@ function App() {
   </div>
 </section>
 {/* Contact Section */}
-<section id="contact" className="py-32 px-4 md:px-8 relative overflow-hidden">
+<section id="contact" className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 md:px-8 relative overflow-hidden">
   {/* Animated background */}
   <motion.div
     className="absolute inset-0 -z-10"
@@ -817,7 +817,7 @@ function App() {
       <BlurText
         text="Let's Work Together"
         delay={100}
-        className="text-5xl md:text-6xl font-black mb-6 text-slate-100"
+        className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-4 sm:mb-6 text-slate-100"
         animateBy="words"
         direction="top"
         stepDuration={0.4}
@@ -825,13 +825,13 @@ function App() {
       <BlurText
         text="I'm always interested in hearing about new projects and opportunities."
         delay={60}
-        className="text-xl text-slate-400 mb-12"
+        className="text-base sm:text-lg md:text-xl text-slate-400 mb-8 sm:mb-12"
         animateBy="words"
         direction="top"
         stepDuration={0.2}
       />
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-16">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-8 sm:mb-16">
         {[
           { icon: Mail, title: 'Email', value: 'durvesh5.madvi@gmail.com', href: 'mailto:durvesh5.madvi@gmail.com', delay: 0 },
           { icon: Github, title: 'GitHub', value: 'DurveshMadvi', href: 'https://github.com/DurveshMadvi', delay: 0.1 },
