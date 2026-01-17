@@ -235,7 +235,7 @@ function App() {
 
     {/* Page content */}
     {/* Professional Hero Section */}
-<section className="pt-20 sm:pt-24 px-4 sm:px-6 md:px-8 pb-12 sm:pb-20 relative overflow-hidden">
+<section className="pt-16 sm:pt-20 md:pt-24 px-3 sm:px-4 md:px-6 lg:px-8 pb-8 sm:pb-12 md:pb-20 relative overflow-hidden">
   {/* Animated background blobs - hidden on mobile */}
   <div className="hidden sm:block absolute inset-0 -z-10 overflow-hidden">
     <motion.div
@@ -257,7 +257,7 @@ function App() {
   </div>
 
   <div className="max-w-7xl mx-auto">
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 items-center">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 lg:gap-12 items-center md:items-stretch">
       {/* Left Content */}
       <motion.div
         initial={{ opacity: 0, x: -40 }}
@@ -268,7 +268,7 @@ function App() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="mb-6"
+          className="mb-3 sm:mb-4 md:mb-6"
         >
           <motion.span
             animate={{ 
@@ -310,7 +310,7 @@ function App() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
-          className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-8 sm:mb-12"
+          className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-6 sm:mb-8 md:mb-12"
         >
           <motion.button
             onClick={startAutoScroll}
@@ -346,7 +346,7 @@ function App() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6 }}
-          className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6"
+          className="grid grid-cols-3 gap-2 sm:gap-3 md:gap-4 lg:gap-6"
         >
           <motion.div
             whileHover={{ scale: 1.1, y: -5 }}
@@ -371,9 +371,9 @@ function App() {
         initial={{ opacity: 0, x: 40 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8, delay: 0.3 }}
-        className="relative h-48 sm:h-64 md:h-96 flex items-center justify-center"
+        className="hidden sm:flex relative h-32 sm:h-48 md:h-64 lg:h-96 items-center justify-center"
       >
-        <div className="relative w-40 h-40 sm:w-60 sm:h-60 md:w-full md:max-w-md mx-auto rounded-2xl overflow-hidden bg-black shadow-2xl">
+        <div className="relative w-28 h-28 sm:w-40 sm:h-40 md:w-60 md:h-60 lg:w-full lg:max-w-md mx-auto rounded-2xl overflow-hidden bg-black shadow-2xl">
           <img 
             src={`${BASE_PATH}Gemini_Generated_Image_4vrdju4vrdju4vrd.png`}
             alt="Durvesh Madvi"
@@ -388,13 +388,13 @@ function App() {
 </section>
 
 {/* Projects Section */}
-<section id="projects" className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 md:px-8">
+<section id="projects" className="py-8 sm:py-12 md:py-20 lg:py-28 px-3 sm:px-4 md:px-6 lg:px-8">
   <div className="max-w-7xl mx-auto">
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="mb-20"
+      className="mb-8 sm:mb-12 md:mb-16"
     >
       <BlurText
         text="Featured Projects"
@@ -437,7 +437,7 @@ function App() {
           />
 
           {/* Project Image Area */}
-          <div className="h-32 sm:h-40 md:h-56 bg-slate-800/50 relative overflow-hidden">
+          <div className="h-24 sm:h-32 md:h-40 lg:h-56 bg-slate-800/50 relative overflow-hidden">
           </div>
 
           <div className="p-4 sm:p-6 md:p-8 relative z-10">
@@ -500,13 +500,13 @@ function App() {
 </section>
 
 {/* Skills Section */}
-<section id="skills" className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 md:px-8">
+<section id="skills" className="py-8 sm:py-12 md:py-20 lg:py-28 px-3 sm:px-4 md:px-6 lg:px-8">
   <div className="max-w-7xl mx-auto">
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="mb-20"
+      className="mb-8 sm:mb-12 md:mb-16"
     >
       <BlurText
         text="Technical Skills"
@@ -539,7 +539,7 @@ function App() {
             y: -10,
             boxShadow: '0 0 40px rgba(100,200,255,0.4)'
           }}
-          className="rounded-xl overflow-hidden border border-slate-700/50 bg-slate-800/40 hover:bg-slate-800/60 card-hover p-8 transition-all relative group"
+          className="rounded-xl overflow-hidden border border-slate-700/50 bg-slate-800/40 hover:bg-slate-800/60 card-hover p-4 sm:p-6 md:p-8 transition-all relative group"
         >
           {/* Animated gradient background */}
           <motion.div
@@ -552,7 +552,7 @@ function App() {
 
           <motion.div
             whileHover={{ rotate: 10 }}
-            className="w-12 h-12 rounded-lg bg-slate-700/50 flex items-center justify-center mb-6 relative z-10"
+            className="w-10 sm:w-12 h-10 sm:h-12 rounded-lg bg-slate-700/50 flex items-center justify-center mb-4 sm:mb-6 relative z-10"
           >
             <Zap size={24} className="text-slate-300" />
           </motion.div>
@@ -599,13 +599,13 @@ function App() {
 </section>
 
 {/* Certifications Section */}
-<section id="certifications" className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 md:px-8">
+<section id="certifications" className="py-8 sm:py-12 md:py-20 lg:py-28 px-3 sm:px-4 md:px-6 lg:px-8">
   <div className="max-w-7xl mx-auto">
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="mb-20"
+      className="mb-8 sm:mb-12 md:mb-16"
     >
       <BlurText
         text="Certifications"
@@ -695,13 +695,13 @@ function App() {
   </div>
 </section>
 {/* Achievements Section */}
-<section id="achievements" className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 md:px-8">
+<section id="achievements" className="py-8 sm:py-12 md:py-20 lg:py-28 px-3 sm:px-4 md:px-6 lg:px-8">
   <div className="max-w-7xl mx-auto">
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="mb-20"
+      className="mb-8 sm:mb-12 md:mb-16"
     >
       <BlurText
         text="Achievements"
@@ -795,7 +795,7 @@ function App() {
   </div>
 </section>
 {/* Contact Section */}
-<section id="contact" className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 md:px-8 relative overflow-hidden">
+<section id="contact" className="py-12 sm:py-16 md:py-24 lg:py-32 px-3 sm:px-4 md:px-6 lg:px-8 relative overflow-hidden">
   {/* Animated background */}
   <motion.div
     className="absolute inset-0 -z-10"
