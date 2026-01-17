@@ -374,7 +374,7 @@ function App() {
       >
         <div className="relative w-full h-full max-w-md mx-auto rounded-2xl overflow-hidden bg-black shadow-2xl">
           <img 
-            src="/Gemini_Generated_Image_4vrdju4vrdju4vrd.png"
+            src="/Durvesh-Portfolio/Gemini_Generated_Image_4vrdju4vrdju4vrd.png"
             alt="Durvesh Madvi"
             className="w-full h-full object-cover filter drop-shadow-lg blend-multiply opacity-95"
           />
@@ -881,7 +881,7 @@ function App() {
       </div>
 
       <motion.a
-        href="/Durvesh_CV.pdf"
+        href="/Durvesh-Portfolio/Durvesh_CV.pdf"
         download="Durvesh_Madvi_CV.pdf"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
