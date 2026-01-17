@@ -446,7 +446,7 @@ function App() {
         transition={{ duration: 0.8, delay: 0.3 }}
         className="flex relative h-28 sm:h-40 md:h-56 lg:h-80 items-center justify-center"
       >
-        <div className="relative w-24 h-24 sm:w-36 sm:h-36 md:w-52 md:h-52 lg:w-80 lg:h-80 mx-auto rounded-2xl overflow-hidden bg-black shadow-2xl">
+        <div className="relative w-28 h-28 sm:w-36 sm:h-36 md:w-52 md:h-52 lg:w-80 lg:h-80 mx-auto rounded-2xl overflow-hidden bg-black shadow-2xl">
           <img 
             src={`${BASE_PATH}Gemini_Generated_Image_4vrdju4vrdju4vrd.png`}
             alt="Durvesh Madvi"
