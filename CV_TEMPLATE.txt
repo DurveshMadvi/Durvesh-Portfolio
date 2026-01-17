@@ -1,0 +1,73 @@
+========================================
+DURVESH MADVI
+Full Stack Developer
+========================================
+
+CONTACT INFORMATION
+Email: your.email@example.com
+Phone: +1 (XXX) XXX-XXXX
+LinkedIn: linkedin.com/in/yourprofile
+GitHub: github.com/yourprofile
+Location: Your City, State
+
+========================================
+PROFESSIONAL SUMMARY
+========================================
+Passionate Full Stack Developer with expertise in modern web technologies. 
+Experienced in building responsive applications using React, Node.js, and cloud technologies.
+Proven track record of delivering high-quality solutions and collaborating with cross-functional teams.
+
+========================================
+TECHNICAL SKILLS
+========================================
+Languages: JavaScript, Python, HTML, CSS, SQL
+Frontend: React, Tailwind CSS, Framer Motion, Next.js, Vite
+Backend: Node.js, Express.js, REST APIs, MongoDB, PostgreSQL
+Tools & Platforms: Git, GitHub, VS Code, Webpack, Docker
+Other: WebGL, Canvas, Real-time Applications, Responsive Design
+
+========================================
+PROFESSIONAL EXPERIENCE
+========================================
+
+Full Stack Developer | Company Name | Month Year - Present
+- Developed and maintained 5+ production web applications using React and Node.js
+- Implemented fluid animations and interactive UI effects using Framer Motion and Canvas
+- Optimized application performance reducing load time by 40%
+- Collaborated with designers and product teams on feature development
+
+Developer | Previous Company | Month Year - Month Year
+- Built RESTful APIs with Express.js serving 1000+ daily users
+- Created responsive UI components using React and Tailwind CSS
+- Implemented real-time features using WebSockets
+
+========================================
+PROJECTS
+========================================
+
+Portfolio Website
+- Built a fully animated portfolio with fluid dynamics cursor effects
+- Technologies: React, Tailwind CSS, Framer Motion, WebGL
+- Features: Auto-scrolling sections, blur text animations, interactive effects
+
+[Add 2-3 more projects with descriptions]
+
+========================================
+EDUCATION
+========================================
+
+Bachelor of Science in Computer Science
+University Name | Graduation: Year
+GPA: X.XX
+
+[Add relevant coursework or certifications]
+
+========================================
+CERTIFICATIONS & ACHIEVEMENTS
+========================================
+
+- React Developer Certification
+- [Add other relevant certifications]
+- Award/Recognition: [Achievement details]
+
+========================================
