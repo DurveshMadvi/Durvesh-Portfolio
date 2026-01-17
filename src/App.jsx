@@ -838,7 +838,10 @@ function App() {
           { icon: Github, title: 'GitHub', value: 'DurveshMadvi', href: 'https://github.com/DurveshMadvi', delay: 0.1 },
           { icon: Linkedin, title: 'LinkedIn', value: 'Durvesh Madvi', href: 'https://www.linkedin.com/in/durvesh-madvi-40222528b/', delay: 0.2 }
         ].map((contact, idx) => (
-          <motion.div
+          <motion.a
+            href={contact.href}
+            target={contact.href.startsWith('http') ? "_blank" : undefined}
+            rel={contact.href.startsWith('http') ? "noopener noreferrer" : undefined}
             key={idx}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -849,7 +852,7 @@ function App() {
               y: -10,
               boxShadow: '0 0 40px rgba(100,200,255,0.5)'
             }}
-            className="rounded-xl border border-slate-700/50 bg-slate-800/40 p-4 sm:p-6 md:p-8 hover:bg-slate-800/60 transition-all card-hover relative group overflow-hidden"
+            className="rounded-xl border border-slate-700/50 bg-slate-800/40 p-4 sm:p-6 md:p-8 hover:bg-slate-800/60 transition-all card-hover relative group overflow-hidden cursor-pointer"
           >
             {/* Animated border */}
             <motion.div
@@ -870,14 +873,13 @@ function App() {
             <h3 className="text-sm sm:text-base md:text-lg font-bold text-slate-100 mb-2 relative z-10">
               {contact.title}
             </h3>
-            <a href={contact.href} target={contact.href.startsWith('http') ? "_blank" : undefined} rel={contact.href.startsWith('http') ? "noopener noreferrer" : undefined} className="text-xs sm:text-sm text-slate-400 hover:text-slate-200 transition-colors break-all relative z-10">
-              <motion.span
-                whileHover={{ x: 3 }}
-              >
-                {contact.value}
-              </motion.span>
-            </a>
-          </motion.div>
+            <motion.span
+              className="block text-xs sm:text-sm text-slate-400 hover:text-slate-200 transition-colors break-all relative z-10"
+              whileHover={{ x: 3 }}
+            >
+              {contact.value}
+            </motion.span>
+          </motion.a>
         ))}
       </div>
 
