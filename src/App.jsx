@@ -371,9 +371,9 @@ function App() {
         initial={{ opacity: 0, x: 40 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8, delay: 0.3 }}
-        className="relative h-full min-h-96 flex items-center justify-center"
+        className="relative h-48 sm:h-64 md:h-96 flex items-center justify-center"
       >
-        <div className="relative w-full h-full max-w-md mx-auto rounded-2xl overflow-hidden bg-black shadow-2xl">
+        <div className="relative w-40 h-40 sm:w-60 sm:h-60 md:w-full md:max-w-md mx-auto rounded-2xl overflow-hidden bg-black shadow-2xl">
           <img 
             src={`${BASE_PATH}Gemini_Generated_Image_4vrdju4vrdju4vrd.png`}
             alt="Durvesh Madvi"
@@ -414,7 +414,7 @@ function App() {
       />
     </motion.div>
 
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
       {projects.map((project, index) => (
         <motion.div
           key={project.id}
@@ -437,23 +437,23 @@ function App() {
           />
 
           {/* Project Image Area */}
-          <div className="h-56 bg-slate-800/50 relative overflow-hidden">
+          <div className="h-32 sm:h-40 md:h-56 bg-slate-800/50 relative overflow-hidden">
           </div>
 
-          <div className="p-8 relative z-10">
+          <div className="p-4 sm:p-6 md:p-8 relative z-10">
             <motion.h3
               whileHover={{ x: 5 }}
-              className="text-2xl font-bold mb-3 text-slate-100"
+              className="text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-3 text-slate-100"
             >
               {project.name}
             </motion.h3>
 
-            <p className="text-slate-400 mb-6">
+            <p className="text-xs sm:text-sm md:text-base text-slate-400 mb-4 sm:mb-6 line-clamp-2">
               {project.description}
             </p>
 
             <motion.div
-              className="flex gap-3"
+              className="flex gap-2 sm:gap-3"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ delay: index * 0.15 + 0.3 }}
@@ -471,7 +471,7 @@ function App() {
                   whileTap={{ scale: 0.9 }}
                   className="p-2 rounded-lg bg-slate-700/50 hover:bg-slate-700 text-slate-300 hover:text-white transition-all border border-slate-600"
                 >
-                  <Github size={20} />
+                  <Github size={16} className="sm:w-5 sm:h-5" />
                 </motion.a>
               )}
 
@@ -488,7 +488,7 @@ function App() {
                   whileTap={{ scale: 0.9 }}
                   className="p-2 rounded-lg bg-slate-700/50 hover:bg-slate-700 text-slate-300 hover:text-white transition-all border border-slate-600"
                 >
-                  <ExternalLink size={20} />
+                  <ExternalLink size={16} className="sm:w-5 sm:h-5" />
                 </motion.a>
               )}
             </motion.div>
@@ -625,7 +625,7 @@ function App() {
       />
     </motion.div>
 
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
       {certifications.map((cert, index) => (
         <motion.div
           key={cert.id}
@@ -638,7 +638,7 @@ function App() {
             boxShadow: '0 0 40px rgba(100,200,255,0.5)',
             rotateZ: 1
           }}
-          className="group rounded-xl overflow-hidden border border-slate-700/50 bg-slate-800/40 hover:bg-slate-800/60 card-hover p-8 transition-all relative"
+          className="group rounded-xl overflow-hidden border border-slate-700/50 bg-slate-800/40 hover:bg-slate-800/60 card-hover p-4 sm:p-6 md:p-8 transition-all relative"
         >
           {/* Animated background */}
           <motion.div
@@ -649,36 +649,36 @@ function App() {
             transition={{ duration: 4, repeat: Infinity }}
           />
 
-          <div className="flex items-start gap-6 relative z-10">
+          <div className="flex items-start gap-3 sm:gap-4 md:gap-6 relative z-10">
             <motion.div
               animate={{ 
                 rotate: [0, 10, -10, 0],
                 scale: [1, 1.1, 1]
               }}
               transition={{ duration: 3, repeat: Infinity }}
-              className="w-16 h-16 rounded-lg bg-slate-700/50 flex items-center justify-center flex-shrink-0"
+              className="w-12 sm:w-14 md:w-16 h-12 sm:h-14 md:h-16 rounded-lg bg-slate-700/50 flex items-center justify-center flex-shrink-0"
             >
-              <Star size={32} className="text-slate-300" />
+              <Star size={24} className="sm:w-7 sm:h-7 md:w-8 md:h-8 text-slate-300" />
             </motion.div>
 
             <div className="flex-1">
               <motion.h3
                 animate={{ y: [0, -2, 0] }}
                 transition={{ duration: 2, repeat: Infinity }}
-                className="text-2xl font-bold mb-2 text-slate-100"
+                className="text-lg sm:text-xl md:text-2xl font-bold mb-1 sm:mb-2 text-slate-100"
               >
                 {cert.name}
               </motion.h3>
               <motion.p
                 animate={{ opacity: [0.8, 1, 0.8] }}
                 transition={{ duration: 3, repeat: Infinity }}
-                className="text-lg text-slate-400 font-semibold mb-3"
+                className="text-sm sm:text-base md:text-lg text-slate-400 font-semibold mb-2 sm:mb-3"
               >
                 {cert.issuer}
               </motion.p>
               <motion.p
                 whileHover={{ x: 5 }}
-                className="text-sm text-slate-500 flex items-center gap-2"
+                className="text-xs sm:text-sm text-slate-500 flex items-center gap-2"
               >
                 <motion.span
                   animate={{ scale: [1, 1.5, 1] }}
@@ -721,7 +721,7 @@ function App() {
       />
     </motion.div>
 
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
       {achievements.map((achievement, index) => (
         <motion.div
           key={achievement.id}
@@ -735,7 +735,7 @@ function App() {
             boxShadow: '0 0 50px rgba(100,200,255,0.6)',
             rotateZ: -1
           }}
-          className="group rounded-xl overflow-hidden border border-slate-700/50 bg-slate-800/40 hover:bg-slate-800/60 card-hover p-8 transition-all relative"
+          className="group rounded-xl overflow-hidden border border-slate-700/50 bg-slate-800/40 hover:bg-slate-800/60 card-hover p-4 sm:p-6 md:p-8 transition-all relative"
         >
           {/* Pulsing background */}
           <motion.div
@@ -746,16 +746,16 @@ function App() {
             transition={{ duration: 3, repeat: Infinity }}
           />
 
-          <div className="flex items-start gap-6 relative z-10">
+          <div className="flex items-start gap-3 sm:gap-4 md:gap-6 relative z-10">
             <motion.div
               animate={{ 
                 y: [0, -15, 0],
                 rotate: [0, 5, -5, 0]
               }}
               transition={{ duration: 2.5, repeat: Infinity }}
-              className="w-16 h-16 rounded-lg bg-slate-700/50 flex items-center justify-center flex-shrink-0"
+              className="w-12 sm:w-14 md:w-16 h-12 sm:h-14 md:h-16 rounded-lg bg-slate-700/50 flex items-center justify-center flex-shrink-0"
             >
-              <TrendingUp size={32} className="text-slate-300" />
+              <TrendingUp size={24} className="sm:w-7 sm:h-7 md:w-8 md:h-8 text-slate-300" />
             </motion.div>
 
             <div className="flex-1">
@@ -763,7 +763,7 @@ function App() {
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ delay: index * 0.15 + 0.2 }}
-                className="text-2xl font-bold mb-3 text-slate-100"
+                className="text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-3 text-slate-100"
               >
                 {achievement.title}
               </motion.h3>
@@ -772,13 +772,13 @@ function App() {
                   color: ['#cbd5e1', '#e2e8f0', '#cbd5e1']
                 }}
                 transition={{ duration: 3, repeat: Infinity }}
-                className="text-slate-400 text-lg mb-4"
+                className="text-xs sm:text-sm md:text-lg text-slate-400 mb-2 sm:mb-4 line-clamp-2"
               >
                 {achievement.description}
               </motion.p>
               <motion.p
                 whileHover={{ x: 5 }}
-                className="text-sm text-slate-500 flex items-center gap-2"
+                className="text-xs sm:text-sm text-slate-500 flex items-center gap-2"
               >
                 <motion.span
                   animate={{ scale: [1, 1.5, 1] }}
@@ -832,7 +832,7 @@ function App() {
         stepDuration={0.2}
       />
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-8 sm:mb-16">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-8 mb-8 sm:mb-16">
         {[
           { icon: Mail, title: 'Email', value: 'durvesh5.madvi@gmail.com', href: 'mailto:durvesh5.madvi@gmail.com', delay: 0 },
           { icon: Github, title: 'GitHub', value: 'DurveshMadvi', href: 'https://github.com/DurveshMadvi', delay: 0.1 },
@@ -849,7 +849,7 @@ function App() {
               y: -10,
               boxShadow: '0 0 40px rgba(100,200,255,0.5)'
             }}
-            className="rounded-xl border border-slate-700/50 bg-slate-800/40 p-8 hover:bg-slate-800/60 transition-all card-hover relative group overflow-hidden"
+            className="rounded-xl border border-slate-700/50 bg-slate-800/40 p-4 sm:p-6 md:p-8 hover:bg-slate-800/60 transition-all card-hover relative group overflow-hidden"
           >
             {/* Animated border */}
             <motion.div
@@ -865,12 +865,12 @@ function App() {
               transition={{ duration: 2, repeat: Infinity }}
               className="relative z-10"
             >
-              <contact.icon size={40} className="text-slate-300 mx-auto mb-4" />
+              <contact.icon size={32} className="sm:w-10 sm:h-10 text-slate-300 mx-auto mb-3 sm:mb-4" />
             </motion.div>
-            <h3 className="text-lg font-bold text-slate-100 mb-2 relative z-10">
+            <h3 className="text-sm sm:text-base md:text-lg font-bold text-slate-100 mb-2 relative z-10">
               {contact.title}
             </h3>
-            <a href={contact.href} target={contact.href.startsWith('http') ? "_blank" : undefined} rel={contact.href.startsWith('http') ? "noopener noreferrer" : undefined} className="text-slate-400 hover:text-slate-200 transition-colors break-all relative z-10">
+            <a href={contact.href} target={contact.href.startsWith('http') ? "_blank" : undefined} rel={contact.href.startsWith('http') ? "noopener noreferrer" : undefined} className="text-xs sm:text-sm text-slate-400 hover:text-slate-200 transition-colors break-all relative z-10">
               <motion.span
                 whileHover={{ x: 3 }}
               >
