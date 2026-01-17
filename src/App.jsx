@@ -361,7 +361,7 @@ function App() {
           transition={{ delay: 0.3 }}
         >
           <BlurText
-            text="Full Stack Developer"
+            text="Vannya Yedi"
             delay={150}
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-4 sm:mb-6 leading-tight"
             animateBy="words"
