@@ -419,7 +419,7 @@ function App() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6 }}
-          className="grid grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-8"
+          className="grid grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-8 text-center sm:text-left"
         >
           <motion.div
             whileHover={{ scale: 1.1, y: -5 }}
@@ -768,7 +768,7 @@ function App() {
   </div>
 </section>
 {/* Achievements Section */}
-<section id="achievements" className="py-6 sm:py-10 md:py-14 lg:py-18 px-3 sm:px-4 md:px-6 lg:px-8">>
+<section id="achievements" className="py-6 sm:py-10 md:py-14 lg:py-18 px-3 sm:px-4 md:px-6 lg:px-8">
   <div className="max-w-7xl mx-auto">
     <motion.div
       initial={{ opacity: 0, y: 20 }}
