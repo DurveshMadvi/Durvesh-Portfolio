@@ -25,6 +25,7 @@ import CounterAnimation from "./components/CounterAnimation";
 import SplashCursor from "./components/SplashCursor";
 
 const API_BASE = "http://localhost:5000/api";
+const BASE_PATH = import.meta.env.BASE_URL;
 
 function App() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -374,7 +375,7 @@ function App() {
       >
         <div className="relative w-full h-full max-w-md mx-auto rounded-2xl overflow-hidden bg-black shadow-2xl">
           <img 
-            src="/Durvesh-Portfolio/Gemini_Generated_Image_4vrdju4vrdju4vrd.png"
+            src={`${BASE_PATH}Gemini_Generated_Image_4vrdju4vrdju4vrd.png`}
             alt="Durvesh Madvi"
             className="w-full h-full object-cover filter drop-shadow-lg blend-multiply opacity-95"
           />
@@ -881,7 +882,7 @@ function App() {
       </div>
 
       <motion.a
-        href="/Durvesh-Portfolio/Durvesh_CV.pdf"
+        href={`${BASE_PATH}Durvesh_CV.pdf`}
         download="Durvesh_Madvi_CV.pdf"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
