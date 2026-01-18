@@ -43,7 +43,8 @@ const DEFAULT_PROJECTS = [
     "description": "A smart water monitoring system enabling real-time data tracking and management. Built with Flask & SQLAlchemy, featuring complete CRUD operations and an intuitive dashboard.",
     "technologies": ["Python", "Flask", "SQLAlchemy", "MySQL", "Tailwind"],
     "github": "https://github.com/DurveshMadvi/Aqua-Monitor",
-    "live": "https://aqua-monitor.example.com"
+    "live": "https://aqua-monitor.example.com",
+    "image": ""
   },
   {
     "id": 2,
@@ -52,7 +53,8 @@ const DEFAULT_PROJECTS = [
     "description": "A dynamic news aggregation platform delivering real-time content from global news APIs. Designed with React for lightning-fast performance and a responsive interface.",
     "technologies": ["React.js", "REST APIs", "Axios", "CSS3", "Responsive Design"],
     "github": "https://github.com/DurveshMadvi/Nuzz",
-    "live": "https://durveshmadvi.github.io/Nuzz"
+    "live": "https://durveshmadvi.github.io/Nuzz",
+    "image": ""
   }
 ];
 
@@ -100,6 +102,7 @@ function App() {
   const [achievements, setAchievements] = useState([]);
   const [loading, setLoading] = useState(true);
   const [isScrolling, setIsScrolling] = useState(false);
+  const [isCarouselDragging, setIsCarouselDragging] = useState(false);
 
   const startAutoScroll = async () => {
     setIsScrolling(true);
@@ -450,7 +453,7 @@ function App() {
         initial={{ opacity: 0, x: 40 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8, delay: 0.3 }}
-        className="flex relative h-28 sm:h-40 md:h-56 lg:h-80 items-center justify-center"
+        className="flex relative h-28 sm:h-40 md:h-56 lg:h-80 items-center justify-center mt-4 md:mt-6 lg:mt-8"
       >
         <div className="relative w-28 h-28 sm:w-36 sm:h-36 md:w-52 md:h-52 lg:w-80 lg:h-80 mx-auto rounded-2xl overflow-hidden bg-black shadow-2xl">
           <img 
@@ -493,87 +496,283 @@ function App() {
       />
     </motion.div>
 
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3 md:gap-4 lg:gap-6">
-      {projects.map((project, index) => (
-        <motion.div
-          key={project.id}
-          initial={{ opacity: 0, y: 50, rotateX: 40 }}
-          whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
-          transition={{ duration: 0.6, delay: index * 0.15 }}
-          viewport={{ once: true }}
-          whileHover={{ 
-            scale: 1.08,
-            rotateZ: 2,
-            boxShadow: '0 0 40px rgba(100,200,255,0.5)'
-          }}
-          className="group rounded-xl overflow-hidden border border-slate-700/50 bg-slate-800/40 hover:bg-slate-800/60 card-hover transition-all perspective"
-        >
-          {/* Animated shimmer overlay */}
+    <div className="w-full overflow-hidden bg-slate-950/50 py-4">
+      <motion.div 
+        className="flex gap-2 sm:gap-3 md:gap-4 lg:gap-6 px-3 sm:px-4 md:px-6 lg:px-8"
+        initial={{ x: 0 }}
+        animate={isCarouselDragging ? { x: 0 } : { x: -1500 }}
+        transition={isCarouselDragging ? {} : { 
+          duration: 30, 
+          repeat: Infinity, 
+          ease: "linear",
+          repeatType: "loop",
+          repeatDelay: 0
+        }}
+        drag="x"
+        dragElastic={0.2}
+        dragMomentum={false}
+        onDragStart={() => setIsCarouselDragging(true)}
+        onDragEnd={() => setIsCarouselDragging(false)}
+      >
+        {projects.map((project, index) => (
           <motion.div
-            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent"
-            animate={{ x: ['-100%', '100%'] }}
-            transition={{ duration: 3, repeat: Infinity }}
-          />
+            key={`${project.id}-${index}-1`}
+            initial={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: false }}
+            whileHover={{ 
+              scale: 1.05,
+              boxShadow: '0 0 40px rgba(100,200,255,0.5)'
+            }}
+            className="group rounded-2xl bg-gradient-to-br from-slate-800/60 to-slate-900/60 hover:shadow-lg hover:shadow-cyan-400/50 card-hover transition-all perspective flex-shrink-0 w-56 sm:w-64 md:w-72 lg:w-80 h-72 sm:h-80 flex flex-col"
+          >
+            {/* Top Accent Bar */}
+            <div className="h-1 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 rounded-t-2xl"></div>
+            
+            <div className="p-3 sm:p-4 md:p-5 lg:p-6 flex-1 flex flex-col overflow-hidden">
+              {/* Project Type Badge */}
+              <div className="mb-2 sm:mb-3 inline-flex">
+                <span className="text-xs font-semibold px-2 sm:px-3 py-1 bg-cyan-400/20 text-cyan-300 rounded-full">
+                  {project.type}
+                </span>
+              </div>
 
-          {/* Project Image Area */}
-          <div className="h-24 sm:h-28 md:h-36 lg:h-44 bg-slate-800/50 relative overflow-hidden">
-          </div>
+              {/* Project Title */}
+              <motion.h3
+                whileHover={{ x: 5 }}
+                className="text-base sm:text-lg md:text-xl font-bold mb-1 sm:mb-2 text-slate-100 line-clamp-2"
+              >
+                {project.name}
+              </motion.h3>
 
-          <div className="p-3 sm:p-4 md:p-5 lg:p-6 relative z-10">
-            <motion.h3
-              whileHover={{ x: 5 }}
-              className="text-sm sm:text-base md:text-lg lg:text-xl font-bold mb-2 text-slate-100"
-            >
-              {project.name}
-            </motion.h3>
+              {/* Description */}
+              <p className="text-xs sm:text-sm md:text-base text-slate-400 mb-2 sm:mb-3 md:mb-4 line-clamp-3 flex-grow">
+                {project.description}
+              </p>
 
-            <p className="text-xs sm:text-xs md:text-sm lg:text-base text-slate-400 mb-3 sm:mb-4 md:mb-6 line-clamp-2">
-              {project.description}
-            </p>
+              {/* Technologies */}
+              <div className="mb-3 sm:mb-4 flex flex-wrap gap-1">
+                {project.technologies && project.technologies.slice(0, 2).map((tech, idx) => (
+                  <span key={idx} className="text-xs px-2 py-0.5 bg-slate-700/50 text-slate-300 rounded border border-slate-600/50">
+                    {tech}
+                  </span>
+                ))}
+                {project.technologies && project.technologies.length > 2 && (
+                  <span className="text-xs px-2 py-0.5 bg-slate-700/50 text-slate-400 rounded border border-slate-600/50">
+                    +{project.technologies.length - 2}
+                  </span>
+                )}
+              </div>
 
-            <motion.div
-              className="flex gap-2 sm:gap-3"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: index * 0.15 + 0.3 }}
-            >
-              {project.github && (
-                <motion.a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ 
-                    scale: 1.25,
-                    rotate: 10,
-                    boxShadow: '0 0 20px rgba(100,200,255,0.6)'
-                  }}
-                  whileTap={{ scale: 0.9 }}
-                  className="p-2 rounded-lg bg-slate-700/50 hover:bg-slate-700 text-slate-300 hover:text-white transition-all border border-slate-600"
-                >
-                  <Github size={16} className="sm:w-5 sm:h-5" />
-                </motion.a>
-              )}
+              {/* Links */}
+              <motion.div
+                className="flex gap-2 sm:gap-3 mt-auto"
+                initial={{ opacity: 1 }}
+              >
+                {project.github && (
+                  <motion.a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="flex-1 flex items-center justify-center gap-1 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg bg-slate-700/40 hover:bg-slate-700/70 text-slate-300 hover:text-cyan-300 transition-all border border-slate-600/50 hover:border-cyan-400/50 text-xs sm:text-sm font-medium"
+                  >
+                    <Github size={14} className="sm:w-4 sm:h-4" />
+                    <span className="hidden sm:inline">Code</span>
+                  </motion.a>
+                )}
 
-              {project.live && (
-                <motion.a
-                  href={project.live}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ 
-                    scale: 1.25,
-                    rotate: -10,
-                    boxShadow: '0 0 20px rgba(100,200,255,0.6)'
-                  }}
-                  whileTap={{ scale: 0.9 }}
-                  className="p-2 rounded-lg bg-slate-700/50 hover:bg-slate-700 text-slate-300 hover:text-white transition-all border border-slate-600"
-                >
-                  <ExternalLink size={16} className="sm:w-5 sm:h-5" />
-                </motion.a>
-              )}
-            </motion.div>
-          </div>
-        </motion.div>
-      ))}
+                {project.live && (
+                  <motion.a
+                    href={project.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="flex-1 flex items-center justify-center gap-1 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg bg-gradient-to-r from-cyan-400/30 to-blue-400/30 hover:from-cyan-400/50 hover:to-blue-400/50 text-cyan-300 hover:text-cyan-200 transition-all border border-cyan-400/50 text-xs sm:text-sm font-medium"
+                  >
+                    <ExternalLink size={14} className="sm:w-4 sm:h-4" />
+                    <span className="hidden sm:inline">Live</span>
+                  </motion.a>
+                )}
+              </motion.div>
+            </div>
+          </motion.div>
+        ))}
+        {projects.map((project, index) => (
+          <motion.div
+            key={`${project.id}-${index}-2`}
+            initial={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: false }}
+            whileHover={{ 
+              scale: 1.05,
+              boxShadow: '0 0 40px rgba(100,200,255,0.5)'
+            }}
+            className="group rounded-2xl bg-gradient-to-br from-slate-800/60 to-slate-900/60 hover:shadow-lg hover:shadow-cyan-400/50 card-hover transition-all perspective flex-shrink-0 w-56 sm:w-64 md:w-72 lg:w-80 h-72 sm:h-80 flex flex-col"
+          >
+            {/* Top Accent Bar */}
+            <div className="h-1 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 rounded-t-2xl"></div>
+            
+            <div className="p-3 sm:p-4 md:p-5 lg:p-6 flex-1 flex flex-col overflow-hidden">
+              {/* Project Type Badge */}
+              <div className="mb-2 sm:mb-3 inline-flex">
+                <span className="text-xs font-semibold px-2 sm:px-3 py-1 bg-cyan-400/20 text-cyan-300 rounded-full">
+                  {project.type}
+                </span>
+              </div>
+
+              {/* Project Title */}
+              <motion.h3
+                whileHover={{ x: 5 }}
+                className="text-base sm:text-lg md:text-xl font-bold mb-1 sm:mb-2 text-slate-100 line-clamp-2"
+              >
+                {project.name}
+              </motion.h3>
+
+              {/* Description */}
+              <p className="text-xs sm:text-sm md:text-base text-slate-400 mb-2 sm:mb-3 md:mb-4 line-clamp-3 flex-grow">
+                {project.description}
+              </p>
+
+              {/* Technologies */}
+              <div className="mb-3 sm:mb-4 flex flex-wrap gap-1">
+                {project.technologies && project.technologies.slice(0, 2).map((tech, idx) => (
+                  <span key={idx} className="text-xs px-2 py-0.5 bg-slate-700/50 text-slate-300 rounded border border-slate-600/50">
+                    {tech}
+                  </span>
+                ))}
+                {project.technologies && project.technologies.length > 2 && (
+                  <span className="text-xs px-2 py-0.5 bg-slate-700/50 text-slate-400 rounded border border-slate-600/50">
+                    +{project.technologies.length - 2}
+                  </span>
+                )}
+              </div>
+
+              {/* Links */}
+              <motion.div
+                className="flex gap-2 sm:gap-3 mt-auto"
+                initial={{ opacity: 1 }}
+              >
+                {project.github && (
+                  <motion.a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="flex-1 flex items-center justify-center gap-1 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg bg-slate-700/40 hover:bg-slate-700/70 text-slate-300 hover:text-cyan-300 transition-all border border-slate-600/50 hover:border-cyan-400/50 text-xs sm:text-sm font-medium"
+                  >
+                    <Github size={14} className="sm:w-4 sm:h-4" />
+                    <span className="hidden sm:inline">Code</span>
+                  </motion.a>
+                )}
+
+                {project.live && (
+                  <motion.a
+                    href={project.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="flex-1 flex items-center justify-center gap-1 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg bg-gradient-to-r from-cyan-400/30 to-blue-400/30 hover:from-cyan-400/50 hover:to-blue-400/50 text-cyan-300 hover:text-cyan-200 transition-all border border-cyan-400/50 text-xs sm:text-sm font-medium"
+                  >
+                    <ExternalLink size={14} className="sm:w-4 sm:h-4" />
+                    <span className="hidden sm:inline">Live</span>
+                  </motion.a>
+                )}
+              </motion.div>
+            </div>
+          </motion.div>
+        ))}
+        {projects.map((project, index) => (
+          <motion.div
+            key={`${project.id}-${index}-3`}
+            initial={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: false }}
+            whileHover={{ 
+              scale: 1.05,
+              boxShadow: '0 0 40px rgba(100,200,255,0.5)'
+            }}
+            className="group rounded-2xl bg-gradient-to-br from-slate-800/60 to-slate-900/60 hover:shadow-lg hover:shadow-cyan-400/50 card-hover transition-all perspective flex-shrink-0 w-56 sm:w-64 md:w-72 lg:w-80 h-72 sm:h-80 flex flex-col"
+          >
+            {/* Top Accent Bar */}
+            <div className="h-1 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 rounded-t-2xl"></div>
+            
+            <div className="p-3 sm:p-4 md:p-5 lg:p-6 flex-1 flex flex-col overflow-hidden">
+              {/* Project Type Badge */}
+              <div className="mb-2 sm:mb-3 inline-flex">
+                <span className="text-xs font-semibold px-2 sm:px-3 py-1 bg-cyan-400/20 text-cyan-300 rounded-full">
+                  {project.type}
+                </span>
+              </div>
+
+              {/* Project Title */}
+              <motion.h3
+                whileHover={{ x: 5 }}
+                className="text-base sm:text-lg md:text-xl font-bold mb-1 sm:mb-2 text-slate-100 line-clamp-2"
+              >
+                {project.name}
+              </motion.h3>
+
+              {/* Description */}
+              <p className="text-xs sm:text-sm md:text-base text-slate-400 mb-2 sm:mb-3 md:mb-4 line-clamp-3 flex-grow">
+                {project.description}
+              </p>
+
+              {/* Technologies */}
+              <div className="mb-3 sm:mb-4 flex flex-wrap gap-1">
+                {project.technologies && project.technologies.slice(0, 2).map((tech, idx) => (
+                  <span key={idx} className="text-xs px-2 py-0.5 bg-slate-700/50 text-slate-300 rounded border border-slate-600/50">
+                    {tech}
+                  </span>
+                ))}
+                {project.technologies && project.technologies.length > 2 && (
+                  <span className="text-xs px-2 py-0.5 bg-slate-700/50 text-slate-400 rounded border border-slate-600/50">
+                    +{project.technologies.length - 2}
+                  </span>
+                )}
+              </div>
+
+              {/* Links */}
+              <motion.div
+                className="flex gap-2 sm:gap-3 mt-auto"
+                initial={{ opacity: 1 }}
+              >
+                {project.github && (
+                  <motion.a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="flex-1 flex items-center justify-center gap-1 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg bg-slate-700/40 hover:bg-slate-700/70 text-slate-300 hover:text-cyan-300 transition-all border border-slate-600/50 hover:border-cyan-400/50 text-xs sm:text-sm font-medium"
+                  >
+                    <Github size={14} className="sm:w-4 sm:h-4" />
+                    <span className="hidden sm:inline">Code</span>
+                  </motion.a>
+                )}
+
+                {project.live && (
+                  <motion.a
+                    href={project.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="flex-1 flex items-center justify-center gap-1 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg bg-gradient-to-r from-cyan-400/30 to-blue-400/30 hover:from-cyan-400/50 hover:to-blue-400/50 text-cyan-300 hover:text-cyan-200 transition-all border border-cyan-400/50 text-xs sm:text-sm font-medium"
+                  >
+                    <ExternalLink size={14} className="sm:w-4 sm:h-4" />
+                    <span className="hidden sm:inline">Live</span>
+                  </motion.a>
+                )}
+              </motion.div>
+            </div>
+          </motion.div>
+        ))}
+      </motion.div>
     </div>
   </div>
 </section>
